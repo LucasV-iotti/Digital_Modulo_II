@@ -20,10 +20,10 @@ const scenarios=[
     {text:"Vamos resolver isso agora!",tags:["comunicacao"],tip:"Transmite energia, mas é promessa arriscada sem checagem."},]},
   {id:3,message:"Eu queria saber sobre a proposta, mas antes: você torce pra qual time?",time:16,goal:["conducao"],options:[
     {text:"Boa! Para avançarmos, preciso confirmar seu CPF. Pode me informar?",tags:["conducao"],tip:"Retoma o foco com cordialidade e orienta o próximo passo."},
-    {text:"Sou do [seu time]! E podemos falar do plano depois do seu CPF, tudo bem?",tags:["desvio","conducao"],tip:"Cria vínculo, mas alimenta o desvio antes de retomar."},
+    {text:"Sou do [seu time]! E podemos falar da sua proposta depois do seu CPF, tudo bem?",tags:["desvio","conducao"],tip:"Cria vínculo, mas alimenta o desvio antes de retomar."},
     {text:"CPF, por favor.",tags:["frio","conducao"],tip:"Direto demais e sem rapport."},
     {text:"Vamos por partes: qual plano você quer e seu CPF?",tags:["conducao"],tip:"Duas demandas ao mesmo tempo confundem o cliente."},]},
-  {id:4,message:"Consegue ver se minha proposta já foi aprovado?",time:15,goal:["conducao"],options:[
+  {id:4,message:"Consegue ver se minha proposta já foi aprovada?",time:15,goal:["conducao"],options:[
     {text:"Estou consultando no sistema, só um instante por favor.",tags:["conducao"],tip:"Sinaliza verificação e ajusta expectativa; use o botão 📎 para pausar o tempo."},
     {text:"Um instante, por favor. Vou verificar e já retorno.",tags:["conducao"],tip:"Boa prática; lembre-se de sinalizar que está verificando."},
     {text:"Calma aí.",tags:["frio"],tip:"Tom impaciente e pouco profissional."},
