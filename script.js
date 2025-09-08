@@ -18,12 +18,12 @@ const scenarios=[
     {text:"Entendo. Para avançarmos, pode me informar o número do contrato?",tags:["empatia","conducao"],tip:"Mostra empatia e direciona o próximo passo."},
     {text:"Calma, vamos ver isso, mas preciso do contrato imediatamente.",tags:["conducao","frio"],tip:"Pressiona e minimiza o sentimento do cliente."},
     {text:"Vamos resolver isso agora!",tags:["comunicacao"],tip:"Transmite energia, mas é promessa arriscada sem checagem."},]},
-  {id:3,message:"Eu queria saber sobre o plano, mas antes: você torce pra qual time?",time:16,goal:["conducao"],options:[
+  {id:3,message:"Eu queria saber sobre a proposta, mas antes: você torce pra qual time?",time:16,goal:["conducao"],options:[
     {text:"Boa! Para avançarmos, preciso confirmar seu CPF. Pode me informar?",tags:["conducao"],tip:"Retoma o foco com cordialidade e orienta o próximo passo."},
     {text:"Sou do [seu time]! E podemos falar do plano depois do seu CPF, tudo bem?",tags:["desvio","conducao"],tip:"Cria vínculo, mas alimenta o desvio antes de retomar."},
     {text:"CPF, por favor.",tags:["frio","conducao"],tip:"Direto demais e sem rapport."},
     {text:"Vamos por partes: qual plano você quer e seu CPF?",tags:["conducao"],tip:"Duas demandas ao mesmo tempo confundem o cliente."},]},
-  {id:4,message:"Consegue ver se meu cadastro já foi aprovado?",time:15,goal:["conducao"],options:[
+  {id:4,message:"Consegue ver se minha proposta já foi aprovado?",time:15,goal:["conducao"],options:[
     {text:"Estou consultando no sistema, só um instante por favor.",tags:["conducao"],tip:"Sinaliza verificação e ajusta expectativa; use o botão 📎 para pausar o tempo."},
     {text:"Um instante, por favor. Vou verificar e já retorno.",tags:["conducao"],tip:"Boa prática; lembre-se de sinalizar que está verificando."},
     {text:"Calma aí.",tags:["frio"],tip:"Tom impaciente e pouco profissional."},
@@ -33,21 +33,21 @@ const scenarios=[
     {text:"Disponha! Posso apoiar em mais alguma coisa agora?",tags:["finalizacao","comunicacao"],tip:"Boa prática: confirmação de encerramento com oferta de ajuda."},
     {text:"Encerrando atendimento. Bom dia.",tags:["finalizacao"],tip:"Fecha sem calor humano e sem checar necessidades finais."},
     {text:"Tá 👍",tags:["frio"],tip:"Informal demais e pouco profissional."},]},
-  {id:6,message:"Qual o prazo para a entrega do serviço?",time:14,goal:["comunicacao","conducao"],options:[
-    {text:"O prazo é de 2 dias úteis. Posso abrir sua solicitação agora?",tags:["comunicacao","conducao","pergunta_fechada"],tip:"Clareza + encaminhamento com decisão fechada."},
-    {text:"O prazo padrão é 2 a 3 dias úteis, tudo bem?",tags:["comunicacao"],tip:"Informativo, porém sem condução para o próximo passo."},
-    {text:"Depende do volume, mas costuma ser rápido.",tags:["comunicacao"],tip:"Vago e sujeito a frustração."},
+  {id:6,message:"Qual o prazo para a retirada do CPF da negativação?",time:14,goal:["comunicacao","conducao"],options:[
+    {text:"O prazo é de até 5 dias úteis. Mais alguma dúvida?",tags:["comunicacao","conducao","pergunta_fechada"],tip:"Clareza + encaminhamento com decisão fechada."},
+    {text:"O prazo padrão é 3 a 5 dias úteis, tudo bem?",tags:["comunicacao"],tip:"Informativo, porém sem condução para o próximo passo."},
+    {text:"Depende do pagamento, mas costuma ser rápido.",tags:["comunicacao"],tip:"Vago e sujeito a frustração."},
     {text:"É rápido, quer seguir?",tags:["conducao","pergunta_fechada"],tip:"Conduz, porém sem transparência de prazo."},]},
   {id:7,message:"Tive um problema, posso explicar melhor?",time:18,goal:["empatia","comunicacao"],options:[
-    {text:"Claro! Pode me contar o que aconteceu? Se puder, inclua data e qualquer mensagem de erro que apareceu.",tags:["empatia","comunicacao"],tip:"Mostra interesse e guia objetivamente o relato."},
+    {text:"Claro! Pode me contar o que aconteceu?",tags:["empatia","comunicacao"],tip:"Mostra interesse e guia objetivamente o relato."},
     {text:"Pode mandar um áudio explicando?",tags:["frio"],tip:"Nem sempre é adequado ao canal e dificulta registro."},
     {text:"Resume em duas linhas, por favor.",tags:["desvio"],tip:"Restringe o cliente antes de entender o contexto."},
     {text:"Antes, me informa CPF e protocolo.",tags:["conducao"],tip:"Antecipar dados pode travar o relato inicial."},]},
-  {id:8,message:"Tenho urgência. Consegue resolver ainda hoje?",time:16,goal:["comunicacao","conducao","empatia"],options:[
-    {text:"Entendo a urgência! Posso priorizar para hoje ou agendamos para amanhã cedo — qual prefere?",tags:["empatia","conducao","pergunta_fechada"],tip:"Valida sentimento e oferece alternativas viáveis."},
-    {text:"Vou tentar agilizar para hoje, tudo bem?",tags:["comunicacao"],tip:"Boa intenção, mas vago e sem alternativa."},
-    {text:"Hoje não é possível.",tags:["comunicacao"],tip:"Transparente, mas sem oferecer caminho alternativo."},
-    {text:"Consegue esperar até amanhã?",tags:["pergunta_fechada"],tip:"Pergunta fechada, porém ignora a urgência do cliente."},]},
+  {id:8,message:"Tenho urgência para resolver essa pendência. consegue me mandar o boleto ainda hoje?",time:16,goal:["comunicacao","conducao","empatia"],options:[
+    {text:"Claro! Prefere por e-mail ou WhatsApp?",tags:["empatia","conducao","pergunta_fechada"],tip:"Valida sentimento e oferece alternativas viáveis."},
+    {text:"Ok, sem problemas!",tags:["comunicacao"],tip:"Boa intenção, mas vago e sem alternativa."},
+    {text:"Não sei se é possível hoje.",tags:["comunicacao"],tip:"Transparente, mas sem oferecer caminho alternativo."},
+    {text:"Consigo fechar para amanhã, pode ser?",tags:["pergunta_fechada"],tip:"Pergunta fechada, porém ignora a urgência do cliente."},]},
 ];
 
 document.addEventListener('DOMContentLoaded',()=>{ $('#caseTotal').textContent=scenarios.length; bindUI(); applyPrefsFromStorage(); const skip=localStorage.getItem('chatlab:skipIntro')==='1'; if(skip){toggleModal('#modalIntro',false); startGame();} else {toggleModal('#modalIntro',true);} });
