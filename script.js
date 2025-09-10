@@ -53,7 +53,7 @@ const scenarios = [
   { id:1, message:"Oi, recebi uma cobrança e não entendi do que se trata.", time:18, goal:['comunicacao','conducao'], options:[
     { text:"Claro! Posso te explicar o que identifiquei e, se preferir, já te envio as formas de pagamento.", tags:['comunicacao','conducao'], tip:"Esclarece primeiro e encaminha sem exigir dados logo de início." },
     { text:"Entendo. Posso verificar o histórico e te resumir os pontos principais agora, tudo bem?", tags:['comunicacao','empatia','conducao'], tip:"Boa prática: resumo objetivo antes de propor ação." },
-    { text:"Se tiver à mão o número do contrato, agiliza a consulta; se não, posso localizar aqui e te retorno em seguida.", tags:['conducao'], tip:"Nº do contrato apenas como atalho opcional, sem travar o atendimento." },
+    { text:"Eu vou consultar aqui e te retorno em logo em seguida.", tags:['conducao'], tip:"Nº do contrato apenas como atalho opcional, sem travar o atendimento." },
     { text:"É sobre um débito pendente. Precisamos resolver hoje mesmo, certo?", tags:['frio','conducao'], tip:"Pressiona sem informar; pode gerar resistência." },
   ]},
   { id:2, message:"Estou com dificuldades financeiras, não consigo pagar tudo agora.", time:20, goal:['empatia','conducao'], options:[
@@ -63,7 +63,7 @@ const scenarios = [
     { text:"Tem que quitar do jeito que está; não há o que fazer.", tags:['frio'], tip:"Rigidez e falta de alternativas." },
   ]},
   { id:3, message:"Quero pagar, mas não sei como gerar o boleto.", time:16, goal:['comunicacao','conducao'], options:[
-    { text:"Eu gero para você agora e te envio com o passo a passo para pagamento. Pode me informar o número do contrato?", tags:['comunicacao','conducao'], tip:"Aqui o nº do contrato é pertinente para localizar e emitir corretamente." },
+    { text:"Eu gero para você agora e te envio com o passo a passo para pagamento.", tags:['comunicacao','conducao'], tip:"Aqui o nº do contrato é pertinente para localizar e emitir corretamente." },
     { text:"Te explico o processo e já deixo o link pronto; se preferir, envio também Pix com instruções detalhadas.", tags:['comunicacao','conducao'], tip:"Encaminha sem travar na coleta de dado; pode pedir depois se necessário." },
     { text:"Olha no site que você encontra.", tags:['frio'], tip:"Empurra responsabilidade sem apoio prático." },
     { text:"Posso te mandar depois por e-mail quando der tempo.", tags:['comunicacao'], tip:"Promessa vaga gera frustração." },
@@ -75,7 +75,7 @@ const scenarios = [
     { text:"Vejo sim, mas pode levar bastante tempo, ok?", tags:['comunicacao'], tip:"Transparência é bem‑vinda; evite exageros." },
   ]},
   { id:5, message:"Se eu pagar hoje, consigo algum desconto?", time:14, goal:['comunicacao','conducao'], options:[
-    { text:"Ótima notícia: posso verificar condições de abatimento para pagamento à vista e te apresentar as opções agora mesmo.", tags:['conducao','comunicacao'], tip:"Conduz sem burocracia; dados podem ser confirmados depois." },
+    { text:"Ótima notícia: posso verificar condições de descontos para pagamento à vista e te apresentar as opções agora mesmo.", tags:['conducao','comunicacao'], tip:"Conduz sem burocracia; dados podem ser confirmados depois." },
     { text:"Posso simular as alternativas elegíveis e já te envio a proposta com valores e prazos.", tags:['conducao','comunicacao'], tip:"Objetivo e pró‑ativo." },
     { text:"Depende do sistema; talvez não tenha.", tags:['comunicacao'], tip:"Vago e pouco útil." },
     { text:"Hoje não costuma ter desconto.", tags:['frio'], tip:"Fecha a porta antes de avaliar." },
@@ -87,13 +87,13 @@ const scenarios = [
     { text:"Você prefere analisar proposta à vista com ajuste de encargos ou parcelar mantendo parcelas menores?", tags:['conducao','pergunta_fechada'], tip:"Ajuda a decidir, sem coletar dado desnecessário." },
   ]},
   { id:7, message:"Consigo pagar parte hoje e o restante no mês que vem?", time:18, goal:['comunicacao','conducao'], options:[
-    { text:"Podemos sim. Me diga qual valor cabe hoje e uma data segura para o restante; eu já estruturo a proposta com essas datas.", tags:['comunicacao','conducao'], tip:"Coleta informações essenciais para viabilizar o acordo." },
+    { text:"Podemos sim. Me diga qual valor cabe hoje e posso parcelar o restante para o próximo mês.", tags:['comunicacao','conducao'], tip:"Coleta informações essenciais para viabilizar o acordo." },
     { text:"Dá para fazer, mas só se você pagar metade agora.", tags:['desvio'], tip:"Imposição sem diagnóstico." },
     { text:"Tem que quitar tudo hoje, senão complica.", tags:['frio'], tip:"Rigidez sem explorar alternativas." },
-    { text:"Se preferir, organizo Pix da parte de hoje e o boleto do restante para o dia 10.", tags:['conducao','pergunta_fechada'], tip:"Encaminha com proposta concreta e datas." },
+    { text:"Se preferir, organizo Pix da parte de hoje e o boleto do restante para o dia XX.", tags:['conducao','pergunta_fechada'], tip:"Encaminha com proposta concreta e datas." },
   ]},
   { id:8, message:"Quero evitar novos atrasos. Como posso organizar melhor?", time:16, goal:['comunicacao','empatia'], options:[
-    { text:"Boa iniciativa! Posso agendar lembretes e ajustar a data de vencimento conforme as regras; te explico como fica cada opção.", tags:['empatia','comunicacao','conducao'], tip:"Reconhece e oferece medidas práticas." },
+    { text:"Podemos registrar o acordo com pagamento via débito automático. Assim, você consegue visualizar antecipadamente a data em que o valor será debitado.", tags:['empatia','comunicacao','conducao'], tip:"Reconhece e oferece medidas práticas." },
     { text:"É só não esquecer de pagar.", tags:['frio'], tip:"Minimiza a necessidade do cliente." },
     { text:"Coloca no débito automático e pronto.", tags:['comunicacao'], tip:"Sugere solução única, sem entender contexto." },
     { text:"Prefere receber o boleto por e‑mail, WhatsApp ou ambos, para evitar perder o prazo?", tags:['conducao','pergunta_fechada'], tip:"Fecha preferência de canal para reduzir atrasos." },
