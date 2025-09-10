@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Missão II — Chat Lab (Cobrança)</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">💬</span>
+      <h1>Chat Lab — Missão II</h1>
+    </div>
+    <div class="scorebar">
+      <div class="chip" title="Pontuação por Empatia/Escuta Ativa">🤝 Empatia: <span id="scoreEmpatia">0</span></div>
+      <div class="chip" title="Pontuação por Condução/Organização">🎯 Condução: <span id="scoreConducao">0</span></div>
+      <div class="chip" title="Pontuação por Agilidade/Tempo">⏱️ Agilidade: <span id="scoreAgilidade">0</span></div>
+      <div class="chip" title="Cenário atual">🗂️ Caso: <span id="caseIndex">1</span>/<span id="caseTotal">0</span></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <aside class="panel info">
+      <div class="tips">
+        <h3>Dicas rápidas</h3>
+        <ul>
+          <li>Mantenha <strong>tom profissional e empático</strong> com foco em <strong>negociação</strong>.</li>
+          <li>Confirme <strong>número do contrato</strong> antes de propor acordos.</li>
+          <li>Ofereça <strong>alternativas viáveis</strong> (à vista/parcelado) e <strong>evite ameaças</strong>.</li>
+        </ul>
+      </div>
+
+      <div class="prefs">
+        <h3>Preferências</h3>
+        <label class="toggle">
+          <input type="checkbox" id="prefLargeUI" />
+          <span></span> Ícones e interface maiores
+        </label>
+        <label class="toggle">
+          <input type="checkbox" id="prefDarkMode" />
+          <span></span> Modo escuro
+        </label>
+      </div>
+    </aside>
+
+    <section class="game">
+      <div class="statusbar">
+        <div class="timer">
+          <span>Tempo:</span>
+          <div class="progress">
+            <div id="timeBar" class="progress-bar"></div>
+          </div>
+          <span id="timeLabel">--s</span>
+        </div>
+        <div class="controls">
+          <button id="btnVerify" class="btn ghost" title="Sinaliza verificação e pausa o tempo por 5s">📎 Estou verificando…</button>
+        </div>
+      </div>
+
+      <div id="chat" class="chat"></div>
+      <div id="options" class="options"></div>
+
+      <div class="footerbar">
+        <div class="legend">
+          <span class="tag emp">Empatia</span>
+          <span class="tag con">Condução</span>
+          <span class="tag agi">Agilidade</span>
+        </div>
+        <button id="btnNext" class="btn primary" disabled>Próximo caso ▶</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal de introdução / regras -->
+  <div id="modalIntro" class="modal">
+    <div class="modal-card">
+      <h2>Como funciona o jogo 📖</h2>
+      <ol class="rules">
+        <li><strong>Objetivo:</strong> conduzir a negociação de cobrança com Empatia, Condução e Agilidade.</li>
+        <li><strong>Leia</strong> a mensagem do cliente e <strong>escolha</strong> a melhor resposta.</li>
+        <li>Use o botão <strong>📎 Estou verificando…</strong> quando precisar checar algo — o <strong>tempo pausa 5s</strong>.</li>
+        <li>Cada caso tem um <strong>tempo</strong>. Responda antes de zerar para ganhar mais Agilidade.</li>
+        <li>Ao final, veja <strong>medalhas</strong>, métricas e baixe um <strong>relatório .json</strong>.</li>
+      </ol>
+      <div class="legend" style="margin-top:6px">
+        <span class="tag emp">Empatia</span>
+        <span class="tag con">Condução</span>
+        <span class="tag agi">Agilidade</span>
+      </div>
+
+      <div class="player-id">
+        <h3 style="margin-top:8px">Identificação do jogador</h3>
+        <div class="id-grid">
+          <label>
+            <span>Nome</span>
+            <input id="inPlayerName" type="text" placeholder="Seu nome" autocomplete="name" />
+          </label>
+          <label>
+            <span>CPF</span>
+            <input id="inPlayerCPF" type="text" inputmode="numeric" placeholder="000.000.000-00" maxlength="14" />
+          </label>
+        </div>
+        <small style="color:#9fb2dc">Os dados ficam apenas neste navegador (localStorage) para personalizar a experiência.</small>
+      </div>
+
+      <div class="modal-actions" style="justify-content:space-between">
+        <label class="toggle small">
+          <input type="checkbox" id="tgSkipIntro" />
+          <span></span> Não mostrar novamente
+        </label>
+        <button id="btnStart" class="btn primary" disabled>Começar ▶</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de resultado -->
+  <div id="modalResult" class="modal hidden">
+    <div class="modal-card">
+      <h2>Missão concluída 🎉</h2>
+      <div class="medals" id="medals"></div>
+      <div class="results-grid">
+        <div class="res-box"><strong>🤝 Empatia</strong><div id="resEmpatia">0</div></div>
+        <div class="res-box"><strong>🎯 Condução</strong><div id="resConducao">0</div></div>
+        <div class="res-box"><strong>⏱️ Agilidade</strong><div id="resAgilidade">0</div></div>
+        <div class="res-box"><strong>⏳ Tempo médio</strong><div id="resTempoMedio">0s</div></div>
+      </div>
+      <div class="modal-actions">
+        <button id="btnDownload" class="btn secondary">Baixar relatório (.json)</button>
+        <button id="btnRestart" class="btn primary">Jogar novamente</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de digitação -->
+  <div id="modalTyping" class="modal hidden">
+    <div class="modal-card wide">
+      <h2>Desafio de Digitação — 30s ⚡</h2>
+      <p>Digite o texto abaixo com precisão. Sua velocidade (WPM) e acurácia poderão render um <strong>bônus de agilidade</strong> no placar.</p>
+      <div id="typingBox" class="typing-box">
+        <div id="typingText" class="typing-text"></div>
+        <textarea id="typingInput" class="typing-input" placeholder="Comece a digitar aqui quando estiver pronto(a)..." disabled></textarea>
+      </div>
+      <div class="typing-bar">
+        <div class="timer small">
+          <div class="progress">
+            <div id="typingBar" class="progress-bar"></div>
+          </div>
+          <span id="typingTime">30s</span>
+        </div>
+        <div class="stats">
+          <span>WPM: <strong id="typingWPM">0</strong></span>
+          <span>Acurácia: <strong id="typingACC">0%</strong></span>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button id="btnTypingStart" class="btn primary">Iniciar</button>
+        <button id="btnTypingSubmit" class="btn secondary" disabled>Enviar</button>
+        <button id="btnTypingClose" class="btn ghost">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="credits">
+    <small>Feito para treinar negociação em cobrança com empatia, condução e agilidade.</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
