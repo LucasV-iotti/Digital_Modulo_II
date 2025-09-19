@@ -86,7 +86,7 @@ const scenarios = [
     { text:"É sobre um débito pendente. Precisamos resolver hoje mesmo, certo?", tags:['frio','conducao'], tip:"Pressiona sem informar; pode gerar resistência." },
   ]},
   { id:2, message:"Estou com dificuldades financeiras, não consigo pagar tudo agora.", time:20, goal:['empatia','conducao'], options:[
-    { text:"Obrigado por compartilhar. Vamos ajustar a negociação: posso montar opções com parcelas menores e te apresentar agora.", tags:['empatia','conducao'], tip:"Valida e propõe caminho sem travar no dado." },
+    { text:"Obrigado por compartilhar. Vamos ajustar a negociação: pagamento com parcelas menores.", tags:['empatia','conducao'], tip:"Valida e propõe caminho sem travar no dado." },
     { text:"Entendo. Para ficar viável, avaliamos prazo, entrada e parcela máxima que cabe hoje e seguimos com a proposta.", tags:['conducao','comunicacao'], tip:"Conduz a estrutura de negociação com transparência." },
     { text:"Se não pagar, a situação complica; melhor resolver isso hoje, combinado?", tags:['frio'], tip:"Ameaça direta tende a travar a conversa." },
     { text:"Tem que quitar do jeito que está; não há o que fazer.", tags:['frio'], tip:"Rigidez e falta de alternativas." },
@@ -116,13 +116,13 @@ const scenarios = [
     { text:"Você prefere analisar proposta à vista com ajuste de encargos ou parcelar mantendo parcelas menores?", tags:['conducao','pergunta_fechada'], tip:"Ajuda a decidir, sem coletar dado desnecessário." },
   ]},
   { id:7, message:"Consigo pagar parte hoje e o restante no mês que vem?", time:18, goal:['comunicacao','conducao'], options:[
-    { text:"Podemos sim. Me diga qual valor cabe hoje e uma data segura para o restante; eu já estruturo a proposta com essas datas.", tags:['comunicacao','conducao'], tip:"Coleta informações essenciais para viabilizar o acordo." },
+    { text:"Podemos sim. Me diga qual valor você tem disponível e eu já estruturo uma proposta que caiba no seu orçamento.", tags:['comunicacao','conducao'], tip:"Coleta informações essenciais para viabilizar o acordo." },
     { text:"Dá para fazer, mas só se você pagar metade agora.", tags:['desvio'], tip:"Imposição sem diagnóstico." },
     { text:"Tem que quitar tudo hoje, senão complica.", tags:['frio'], tip:"Rigidez sem explorar alternativas." },
     { text:"Se preferir, organizo Pix da parte de hoje e o boleto do restante para o dia 10.", tags:['conducao','pergunta_fechada'], tip:"Encaminha com proposta concreta e datas." },
   ]},
   { id:8, message:"Quero evitar novos atrasos. Como posso organizar melhor?", time:16, goal:['comunicacao','empatia'], options:[
-    { text:"Boa iniciativa! Posso agendar lembretes e ajustar a data de vencimento conforme as regras; te explico como fica cada opção.", tags:['empatia','comunicacao','conducao'], tip:"Reconhece e oferece medidas práticas." },
+    { text:"Ótima iniciativa! Podemos registrar o acordo com pagamento via débito automático. Assim, evita atrasos", tags:['empatia','comunicacao','conducao'], tip:"Reconhece e oferece medidas práticas." },
     { text:"É só não esquecer de pagar.", tags:['frio'], tip:"Minimiza a necessidade do cliente." },
     { text:"Coloca no débito automático e pronto.", tags:['comunicacao'], tip:"Sugere solução única, sem entender contexto." },
     { text:"Prefere receber o boleto por e‑mail, WhatsApp ou ambos, para evitar perder o prazo?", tags:['conducao','pergunta_fechada'], tip:"Fecha preferência de canal para reduzir atrasos." },
